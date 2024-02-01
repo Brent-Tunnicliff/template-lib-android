@@ -6,4 +6,4 @@ on:
 
 jobs:
   call-workflow-in-another-repo:
-    uses: Brent-Tunnicliff/reusable_workflows/pipeline_lib.yml@1.0.0
+    uses: Brent-Tunnicliff/reusable_workflows/.github/workflows/android_pipeline_lib.yml@1.0.0
