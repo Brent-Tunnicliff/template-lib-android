@@ -3,6 +3,7 @@ name: Android CI
 on:
   push:
     branches: [ "initial_setup" ]
+  workflow_dispatch:
 
 jobs:
   call-workflow-in-another-repo:
