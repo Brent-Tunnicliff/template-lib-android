@@ -1,0 +1,9 @@
+name: Android CI
+
+on:
+  push:
+    branches: [ "initial_setup" ]
+
+jobs:
+  call-workflow-in-another-repo:
+    uses: Brent-Tunnicliff/reusable_workflows/pipeline_lib.yml@1.0.0
