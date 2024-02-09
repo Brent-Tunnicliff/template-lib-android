@@ -1,4 +1,4 @@
-name: Android CI
+name: Pipeline
 
 on:
   push:
@@ -6,5 +6,18 @@ on:
   workflow_dispatch:
 
 jobs:
-  call-workflow-in-another-repo:
-    uses: Brent-Tunnicliff/reusable_workflows/.github/workflows/android_pipeline_lib.yml@1.0.0
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Brent-Tunnicliff/setup_android_pipeline_action@1.0.0
+      - name: Build
+        run: ./gradlew build
+      - name: Run tests
+        run: ./gradlew test
+      - name: Publish to local Maven
+        run: ./gradlew publishToMavenLocal
+      - name: Upload lib
+        uses: actions/upload-artifact@v3
+        with:
+          name: Lib generated
+          path: ~/.m2/repository
