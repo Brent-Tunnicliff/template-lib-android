@@ -1,3 +1,5 @@
+// Copyright © 2024 Brent Tunnicliff <brent@tunnicliff.dev>
+
 package dev.tunnicliff.replace_me
 
 import androidx.test.platform.app.InstrumentationRegistry
