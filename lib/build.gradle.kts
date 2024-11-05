@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "dev.tunnicliff.replace_me"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 33
@@ -35,6 +35,10 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 publishing {
@@ -54,13 +58,11 @@ publishing {
 dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.lib.container.android)
     implementation(libs.material)
-
-    // Example of github lib.
-    // implementation("com.github.Brent-Tunnicliff:temp_poc:0.0.4")
 
     testImplementation(libs.junit)
 
-    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.test.espresso.core)
     androidTestImplementation(libs.androidx.junit)
 }
