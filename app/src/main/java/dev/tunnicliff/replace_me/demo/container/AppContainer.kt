@@ -4,7 +4,7 @@ package dev.tunnicliff.replace_me.demo.container
 
 import dev.tunnicliff.container.Container
 import dev.tunnicliff.replace_me.Example
-import dev.tunnicliff.replace_me.RenameMeContainer
+import dev.tunnicliff.replace_me.replace_meContainer
 
 class AppContainer private constructor() : Container() {
     companion object {
@@ -20,9 +20,9 @@ class AppContainer private constructor() : Container() {
          */
         fun initialise() {
             _SHARED = AppContainer()
-            RenameMeContainer.initialise(object : RenameMeContainer.Dependencies {})
+            replace_meContainer.initialise(object : replace_meContainer.Dependencies {})
         }
     }
 
-    fun example(): Example = RenameMeContainer.SHARED.example()
+    fun example(): Example = replace_meContainer.SHARED.example()
 }

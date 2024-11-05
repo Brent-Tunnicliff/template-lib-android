@@ -7,13 +7,13 @@ import dev.tunnicliff.container.Container
 /**
  * Dependency injection container for the library.
  */
-class RenameMeContainer private constructor(
+class replace_meContainer private constructor(
     private val dependencies: Dependencies
 ) : Container() {
     interface Dependencies
 
     companion object {
-        private lateinit var _SHARED: RenameMeContainer
+        private lateinit var _SHARED: replace_meContainer
 
         /**
          * Shared instance of the container.
@@ -22,7 +22,7 @@ class RenameMeContainer private constructor(
          *
          * @throws UninitializedPropertyAccessException if `initialise()` has not been called first.
          */
-        val SHARED: RenameMeContainer
+        val SHARED: replace_meContainer
             get() = _SHARED
 
         /**
@@ -33,7 +33,7 @@ class RenameMeContainer private constructor(
          * @property dependencies the external dependencies required by the container.
          */
         fun initialise(dependencies: Dependencies) {
-            _SHARED = RenameMeContainer(dependencies)
+            _SHARED = replace_meContainer(dependencies)
         }
     }
 
