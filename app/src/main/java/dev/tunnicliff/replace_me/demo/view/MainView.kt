@@ -20,6 +20,6 @@ fun MainView(
 
 @Preview
 @Composable
-private fun GreetingPreview() = ThemedPreviewer {
+private fun Preview() = ThemedPreviewer {
     MainView(viewModel = PreviewMainViewModel())
 }
