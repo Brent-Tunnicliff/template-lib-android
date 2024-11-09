@@ -3,7 +3,6 @@
 package dev.tunnicliff.replace_me.demo
 
 import android.app.Application
-import dev.tunnicliff.replace_me.demo.container.AppContainer
 
 class MainApplication : Application() {
     override fun onCreate() {

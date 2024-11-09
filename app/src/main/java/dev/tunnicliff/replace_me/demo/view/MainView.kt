@@ -9,12 +9,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import dev.tunnicliff.replace_me.demo.container.ViewModelFactory
+import dev.tunnicliff.replace_me.demo.AppContainer
 import dev.tunnicliff.ui.theme.ThemedPreviewer
 
 @Composable
 fun MainView(
-    viewModel: MainViewModel = viewModel(factory = ViewModelFactory)
+    viewModel: MainViewModel = viewModel(factory = AppContainer.ViewModelFactory)
 ) {
     Text(
         text = "Value: ${viewModel.getMessage()}",
