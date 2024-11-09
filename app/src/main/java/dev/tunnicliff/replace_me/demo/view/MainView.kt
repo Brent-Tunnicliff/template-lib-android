@@ -10,6 +10,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.tunnicliff.replace_me.demo.AppContainer
+import dev.tunnicliff.ui.theme.PreviewerTheme
 import dev.tunnicliff.ui.theme.ThemedPreviewer
 
 @Composable
@@ -24,6 +25,15 @@ fun MainView(
 
 @Preview
 @Composable
-private fun Preview() = ThemedPreviewer {
-    MainView(viewModel = PreviewMainViewModel())
+private fun PreviewLightTheme() = PreviewContent(PreviewerTheme.LIGHT)
+
+@Preview
+@Composable
+private fun PreviewDarkTheme() = PreviewContent(PreviewerTheme.DARK)
+
+@Composable
+private fun PreviewContent(theme: PreviewerTheme) {
+    ThemedPreviewer(theme) {
+        MainView(viewModel = PreviewMainViewModel())
+    }
 }
