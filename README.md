@@ -1,6 +1,6 @@
 # template-lib-android
 
-[![](https://jitpack.io/v/Brent-Tunnicliff/template-lib-android.svg)](https://jitpack.io/#Brent-Tunnicliff/template-lib-android)
+[![](https://jitpack.io/v/Brent-Tunnicliff/template-lib-android.svg)](https://jitpack.io/#Brent-Tunnicliff/template-lib-android) ![Weekly download statistics](https://jitpack.io/v/Brent-Tunnicliff/template-lib-android/week.svg) ![Monthly download statistics](https://jitpack.io/v/Brent-Tunnicliff/template-lib-android/month.svg)
 
 Template as a base for all my Android libraries.
 Project contains the library `lib/` and a demo app `app/`.
