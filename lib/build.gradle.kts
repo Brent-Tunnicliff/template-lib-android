@@ -18,6 +18,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            testCoverage {
+                enableAndroidTestCoverage = true
+                enableUnitTestCoverage = true
+            }
+        }
+
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -41,15 +48,43 @@ android {
     }
 }
 
-publishing {
-    publications {
-        register<MavenPublication>("release") {
-            groupId = "dev.tunnicliff"
-            artifactId = "replace_me"
-            version = "0.0.0"
-
-            afterEvaluate {
+afterEvaluate {
+    publishing {
+        publications {
+            register<MavenPublication>("release") {
                 from(components["release"])
+                groupId = "dev.tunnicliff"
+                artifactId = "lib-replace_me-android"
+                version = "0.1.0-alpha.1"
+
+                pom {
+                    packaging = "aar"
+                    name.set("lib-replace_me-android")
+                    description.set("replace_me")
+                    url.set("https://github.com/Brent-Tunnicliff/lib-replace_me-android")
+                    inceptionYear.set("2024")
+
+                    licenses {
+                        license {
+                            name.set("MIT License")
+                            url.set("https://opensource.org/licenses/MIT")
+                        }
+                    }
+
+                    developers {
+                        developer {
+                            id.set("brent")
+                            name.set("Brent Tunnicliff")
+                            email.set("brent@tunnicliff.dev")
+                        }
+                    }
+
+                    scm {
+                        connection.set("scm:git:https://github.com/Brent-Tunnicliff/lib-replace_me-android.git")
+                        developerConnection.set("scm:git:ssh://git@github.com:Brent-Tunnicliff/lib-replace_me-android.git")
+                        url.set("https://github.com/Brent-Tunnicliff/lib-replace_me-android")
+                    }
+                }
             }
         }
     }
@@ -59,6 +94,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
     implementation(libs.lib.container.android)
+    implementation(libs.lib.logging.android)
     implementation(libs.material)
 
     testImplementation(libs.junit)

@@ -23,6 +23,13 @@ android {
     }
 
     buildTypes {
+        debug {
+            testCoverage {
+                enableAndroidTestCoverage = true
+                enableUnitTestCoverage = true
+            }
+        }
+
         release {
             isMinifyEnabled = true
             isShrinkResources = true
@@ -75,6 +82,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.lib.container.android)
+    implementation(libs.lib.logging.android)
     implementation(libs.lib.ui.android)
     implementation(libs.material)
 

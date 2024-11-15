@@ -3,38 +3,26 @@
 package dev.tunnicliff.replace_me
 
 import dev.tunnicliff.container.Container
+import dev.tunnicliff.logging.logger.Logger
 
 /**
  * Dependency injection container for the library.
  */
-class replace_meContainer private constructor(
-    private val dependencies: Dependencies
+class replace_meContainer(
+    dependencies: Dependencies
 ) : Container() {
-    interface Dependencies
+    interface Dependencies {
+        fun logger(): Logger
+    }
 
     companion object {
-        private lateinit var _SHARED: replace_meContainer
+        private lateinit var _LOGGER: () -> Logger
+        val LOGGER: Logger
+            get() = _LOGGER()
+    }
 
-        /**
-         * Shared instance of the container.
-         *
-         * `initialise()` must be called before this can be referenced otherwise
-         *
-         * @throws UninitializedPropertyAccessException if `initialise()` has not been called first.
-         */
-        val SHARED: replace_meContainer
-            get() = _SHARED
-
-        /**
-         * Initialises the container.
-         *
-         * After which `SHARED` will be safe to use.
-         *
-         * @property dependencies the external dependencies required by the container.
-         */
-        fun initialise(dependencies: Dependencies) {
-            _SHARED = replace_meContainer(dependencies)
-        }
+    init {
+        _LOGGER = { dependencies.logger() }
     }
 
     fun example(): Example = resolveSingleton {

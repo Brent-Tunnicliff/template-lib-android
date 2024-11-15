@@ -3,11 +3,37 @@
 package dev.tunnicliff.replace_me.demo
 
 import android.app.Application
+import android.content.Context
+import dev.tunnicliff.logging.model.LogLevel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 
 class MainApplication : Application() {
+    private val container = AppContainer(
+        object : AppContainer.Dependencies {
+            override fun applicationContext(): Context =
+                this@MainApplication.applicationContext
+        }
+    )
+
+    private val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+
     override fun onCreate() {
         super.onCreate()
-        // We need to initialise the DI container asap.
-        AppContainer.initialise()
+        applicationScope.launch {
+            with(container.loggingConfigurationManager()) {
+                setMinimumLogLevel(LogLevel.DEBUG)
+                deleteOldLogs()
+            }
+        }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onLowMemory() {
+        super.onLowMemory()
+        applicationScope.cancel()
     }
 }
