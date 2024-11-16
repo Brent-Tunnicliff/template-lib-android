@@ -9,7 +9,6 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import dev.tunnicliff.container.Container
 import dev.tunnicliff.logging.LoggingContainer
 import dev.tunnicliff.logging.logger.LogUploadHandler
-import dev.tunnicliff.logging.logger.Logger
 import dev.tunnicliff.logging.logger.LoggingConfigurationManager
 import dev.tunnicliff.logging.model.LogLevel
 import dev.tunnicliff.replace_me.Example
@@ -43,8 +42,6 @@ class AppContainer(
 
     companion object {
         private lateinit var CONTAINER: AppContainer
-        val LOGGER: Logger
-            get() = CONTAINER.loggingContainer.logger()
     }
 
     private val loggingContainer: LoggingContainer = LoggingContainer(
@@ -57,11 +54,7 @@ class AppContainer(
         }
     )
 
-    private val libContainer: replace_meContainer = replace_meContainer(
-        object : replace_meContainer.Dependencies {
-            override fun logger(): Logger = LOGGER
-        }
-    )
+    private val libContainer: replace_meContainer = replace_meContainer()
 
     // endregion
 

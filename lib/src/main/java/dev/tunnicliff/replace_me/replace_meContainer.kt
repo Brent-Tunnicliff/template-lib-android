@@ -3,28 +3,11 @@
 package dev.tunnicliff.replace_me
 
 import dev.tunnicliff.container.Container
-import dev.tunnicliff.logging.logger.Logger
 
 /**
  * Dependency injection container for the library.
  */
-class replace_meContainer(
-    dependencies: Dependencies
-) : Container() {
-    interface Dependencies {
-        fun logger(): Logger
-    }
-
-    companion object {
-        private lateinit var _LOGGER: () -> Logger
-        val LOGGER: Logger
-            get() = _LOGGER()
-    }
-
-    init {
-        _LOGGER = { dependencies.logger() }
-    }
-
+class replace_meContainer : Container() {
     fun example(): Example = resolveSingleton {
         Example()
     }
